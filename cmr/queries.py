@@ -512,6 +512,18 @@ class GranuleCollectionBaseQuery(Query):
 
         return self
 
+    def created_at(self, date_from, date_to):
+        self.params["created_at"] = ["{},{}".format(date_from, date_to)]
+        return self
+
+    def production_date(self, date_from, date_to):
+        self.params["production_date"] = ["{},{}".format(date_from, date_to)]
+        return self
+
+    def updated_since(self, date_from):
+        self.params["updated_since"] = date_from
+        return self
+
     def short_name(self, short_name: str) -> Self:
         """
         Filter by short name (aka product or collection name).
